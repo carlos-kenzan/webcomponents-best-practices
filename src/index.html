@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Web Components Best Practices</title>
+
+    <!-- Meta -->
+    <meta name="author" content="Mateus Ortiz">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="vendor/pure/pure-min.css">
+
+</head>
+<body>
+
+  <header>
+    <div class="top-bar" >
+      <div class="center">
+        <h3>Web Components Best Practices</h3>
+      </div>
+    </div>
+
+    <div class="intro">
+      <div class="center">
+        <h1>Best Practices <br>of <br>Web Components</h1>
+      </div>
+    </div>
+
+  </header>
+
+  <section class="welcome">
+    <div class="wrapper">
+      <h1>Welcome</h1>
+
+      <p>
+        This is a guide to best practices with Web Components and some peculiarities and specifications, with tips that can be useful for someone.
+      </p>
+
+    </div>
+  </section>
+
+  <section id="content" class="section">
+    <div class="center">
+
+      <article class="section" id="naming">
+        <span>Naming</span>
+
+        <p>
+          Elements should contain a dash in their name, (e.g <code>&lt;my-tabs&gt;</code> , <code>&lt;x-tabs&gt;</code>), per the Custom Element specification.
+          You want to keep it short but also unique. Only use a prefix shorter than three characters if you already have lots of developer interest in your set of components.
+        </p>
+
+        <p>
+          Unless for private use, elements should use a unique name to avoid clashing with existing elements.
+        </p>
+
+      </article>
+
+      <article class="section" id="attributes">
+        <span>Attributes</span>
+
+        <p>
+          Published attributes should be camel-cased where multiple words are in use.
+          Provide sensible default values as part of your API if values will be bound and displayed anywhere in your template. Default property values in attributes are null. Use @default and @required for parameters that either have a default value or are required.
+        </p>
+
+      </article>
+
+      <artilce class="section" id="attributes-for-data">
+        <span>Attributes for data in</span>
+
+        <p>
+          Use attributes to pass configuration in. Use boolean attributes for boolean values. Ex: <code>&lt;my-element selected&gt;</code> instead of <code>&lt;my-element selected="true"&gt;</code>.
+        </p>
+
+      </artilce>
+
+      <article class="section" id="events">
+        <span>Events for data out</span>
+
+        <p>
+          Use custom events to pass information out of components unless the information to pass is large or changes extremely often.
+        </p>
+
+      </article>
+
+      <article class="section" id="dependencies">
+        <span>Include Dependencies</span>
+
+        <p>
+          Include all dependencies your component needs. Don't worry if that means including redundant <code>&lt;link rel="import" ...&gt;</code>; as long as you set appropriate cache headers, these will only be fetched and loaded once. Using HTTP 2.0 can reduce the cost of having multiple files, or you can concatenate and minify them into a single file when you deploy your app.
+        </p>
+
+      </article>
+
+      <article class="section" id="docs">
+        <span>Document your component</span>
+
+        <p>
+          Document your component so that others know how to use it. Components have many aspects that count as part of their API, including things that you might not think of as part of the API.
+        </p>
+
+        <ul>
+          <li>Attributes can be described concisely with example markup.</li>
+          <li>If one component is designed to be nested inside another one, show it being used in that context.</li>
+          <li>List its JavaScript methods and properties.</li>
+          <li>List its events.</li>
+          <li>When using Shadow DOM, the <content> element and select attribute allow you to select which nodes to put where. If your component treats different elements specially in these selectors, document it!</li>
+          <li>If your component relates to a microdata format, document how to apply that microdata to your component.</li>
+        </ul>
+
+      </article>
+
+      <article class="section" id="custom-elements">
+        <span>Don't create more custom elements than you need</span>
+
+        <p>
+           If you have two similar custom elements and the only difference between them is a different visual structure/display of the same data, consider consolidating them into one element and create two different templates to switch between. Alternatively, elements can be extended rather than duplicating similar functionality in two separate elements.
+        </p>
+
+      </article>
+
+      <article class="section" id="imperative-api">
+        <span>Harmonize your declarative and imperative APIs</span>
+
+        <p>
+          Attributes form (part of) your declarative API; your prototype defines your imperative API. Try to keep the analogous parts linked whenever possible so a user can modify either with the same effect.
+        </p>
+
+      </article>
+
+      <article class="section" id="operate">
+        <span>Don't presume the context you'll operate in</span>
+
+        <p>
+          If your component is successful, it will be used in contexts you never expected, and mixed in with components you've never heard of. Strive to be as encapsulated and flexible--don't rely on any external frameworks or structure wherever possible.
+        </p>
+
+      </article>
+
+      <article class="section" id="shadow-dom">
+        <span>Don't put too much in Shadow DOM</span>
+
+        <p>
+          Shadow DOM allows you to stuff a bunch of complex junk out of sight. However, that's not an excuse to have as many DOM elements as you want in your shadow, as more elements will still lead to worse performance. In addition, try to keep your configuration and state visible by keeping anything semantic exposed in the logical DOM. Cruft goes in the Shadow; semantic stuff doesn't.
+        </p>
+      </article>
+
+    </div>
+  </section>
+
+  <footer class="center">
+
+    <div class="references">
+      <h1>References</h1>
+      <a href="https://github.com/GoogleWebComponents/style-guide">Google Web Components Style Guide</a>
+      <a href="http://webcomponents.org/articles/web-components-best-practices/">WebComponents.org Best Practices</a>
+    </div>
+
+    <p class="credits">Created by <a href="https://www.twitter.com/mteusortiz">Mateus Ortiz</a></p>
+  </footer>
+
+</body>
+</html>

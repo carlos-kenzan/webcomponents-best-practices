@@ -1,0 +1,17 @@
+{
+  "name": "Web Components Best Practices",
+  "version": "0.0.0",
+  "license": "LGPL",
+  "authors": [
+    "Mateus Ortiz <mateus.prado@ig.com.br>"
+  ],
+  "main": "src/index.html",
+  "ignore": [
+    "**/.*",
+    "bower_components",
+    "node_modules"
+  ],
+  "dependencies": {
+    "pure": "~0.5.0"
+  }
+}
